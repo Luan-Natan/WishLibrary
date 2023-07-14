@@ -48,7 +48,7 @@ TestResults/
 *.tar
 *.zip
 
-.vs/
+.vs/*.*
 ######################
 # Logs and databases #
 ######################
