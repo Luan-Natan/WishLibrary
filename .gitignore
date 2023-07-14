@@ -47,6 +47,8 @@ TestResults/
 *.rar
 *.tar
 *.zip
+
+.vs/
 ######################
 # Logs and databases #
 ######################
