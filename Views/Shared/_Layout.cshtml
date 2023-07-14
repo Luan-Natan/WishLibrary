@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Ano = DateTime.Now.Year.ToString();
+}
+
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
@@ -34,21 +38,16 @@
             </div>
         </nav>
     </header>
-    
 
-
-    <div class="">
-        <main>
+    <main>
+        <div>
             @RenderBody()
-        </main>
-    </div>
+        </div>
+    </main>
 
-
-
-
-    <footer class="border-top footer text-muted">
-        <div class="">
-            <p>&copy; 2023 - WishLibrary</p>
+    <footer class="bg-dark container-fluid d-flex">
+        <div class="text-white text-center  align-content-center align-items-center align-self-center center">
+            <p>&copy; @ViewBag.Ano - WishLibrary</p>
         </div>
     </footer>
 
