@@ -1,18 +1,16 @@
-html {
-  font-size: 14px;
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("../image/menu-icon.png");
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.buttonMenu {
+    border: none;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.buttonMenu:focus {
+    outline: none;
 }
 
-body {
-  margin-bottom: 60px;
+.buttonMenu:hover {
+    outline: none;
+    background-color:rgb(110, 117, 154);
 }

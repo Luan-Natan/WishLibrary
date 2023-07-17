@@ -8,21 +8,21 @@
         @ViewBag.Titulo
     </h1>
 
-    <form class="was-validated form-control">
-        <div class="my-3 col-md-3">
-            <label class="my-1" for="nome">Nome do livro</label>
-            <input class="custom-select is-valid" maxlength="100" type="text" required>
-            <div class="invalid-feedback">Digite um nome!</div>
+    <form class="was-validated">
+        <div class="my-3">
+            <label for="nome">Nome do livro</label>
+            <input class="form-control is-valid" maxlength="100" type="text" required>
+            <div class="invalid-feedback">Digite um nome! (100 caracteres)</div>
         </div>
 
-        <div class="my-3 col-md-2">
-            <label class="my-1" for="data">Mês/Ano de lançamento</label>
-            <input class="custom-select is-valid" type="month" id="anoMask" required />
+        <div class="my-3">
+            <label for="data">Mês/Ano de lançamento</label>
+            <input class="form-control is-valid" type="date" id="anoMask" required />
             <div class="invalid-feedback">Selecione uma data!</div>
         </div>
 
-        <div class="my-3 col-md-2">
-            <label class="my-1" for="genero">Gênero</label>
+        <div class="my-3">
+            <label for="genero">Gênero</label>
             <select class="custom-select is-valid" name="genero" required>
                 <option value="" selected>Selecionar...</option>
                 <option value="1">Fantasia</option>
@@ -32,13 +32,9 @@
             <div class="invalid-feedback">Selecione um gênero!</div>
         </div>
 
-        <div class="my-3 col-md-2">
+        <div class="my-3">
             <button class="btn btn-success" type="submit">Enviar</button>
         </div>
     </form>
 
 </div>
-
-
-
-@*^(?!0000$)(?:[0-1][0-9]{3}|20(?:[0-1][0-9]|2[0-3]))*@
