@@ -22,6 +22,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+//Configure routes
 RouteConfiguration.AddRoute(app);
 
 app.Run();
