@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Titulo = "Cadastrar Livro".ToUpper();
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+<div class="">
+
+    <h1 class="">
+        @ViewBag.Titulo
+    </h1>
+
+    <form class="was-validated">
+        <div class="my-3">
+            <label for="nome">Nome do livro</label>
+            <input class="form-control is-valid" maxlength="100" type="text" required>
+            <div class="invalid-feedback">Digite um nome! (100 caracteres)</div>
+        </div>
+
+        <div class="my-3">
+            <label for="data">Mês/Ano de lançamento</label>
+            <input class="form-control is-valid" type="date" id="anoMask" required />
+            <div class="invalid-feedback">Selecione uma data!</div>
+        </div>
+
+        <div class="my-3">
+            <label for="genero">Gênero</label>
+            <select class="custom-select is-valid" name="genero" required>
+                <option value="" selected>Selecionar...</option>
+                <option value="1">Fantasia</option>
+                <option value="2">Romance</option>
+                <option value="3">Ficção Científica</option>
+            </select>
+            <div class="invalid-feedback">Selecione um gênero!</div>
+        </div>
+
+        <div class="my-3">
+            <button class="btn btn-success" type="submit">Enviar</button>
+        </div>
+    </form>
+
+</div>
