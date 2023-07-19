@@ -5,12 +5,12 @@
         public static IEndpointRouteBuilder AddRoute(IEndpointRouteBuilder route)
         {
             route.MapControllerRoute(
-                name: "AdminArea",
+                name: "areas",
                 pattern: "{area:exists}/{controller}/{action}");
 
             route.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Menu}/{action=Index}");
+                pattern: "{controller=Home}/{action=Index}");
 
             return route;
         }

@@ -15,10 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Blogs\Controllers\" />
-    <Folder Include="Areas\Blogs\Data\" />
-    <Folder Include="Areas\Blogs\Models\" />
-    <Folder Include="Areas\Blogs\Views\" />
+    <ProjectReference Include="..\WishLibrary.Core\WishLibrary.Core.csproj" />
   </ItemGroup>
 
 </Project>

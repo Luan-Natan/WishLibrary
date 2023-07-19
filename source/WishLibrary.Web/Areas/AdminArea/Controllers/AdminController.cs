@@ -9,5 +9,9 @@ namespace WishLibrary.Web.Areas.Admin.Controllers
         {
             return View();
         }
+        public IActionResult PainelControle()
+        {
+            return View();
+        }
     }
 }
