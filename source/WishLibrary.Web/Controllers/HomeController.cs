@@ -2,9 +2,9 @@
 
 namespace WishLibrary.Web.Controllers
 {
-    public class MenuController : Controller
+    public class HomeController : Controller
     {
-        public IActionResult ListarLivros()
+        public IActionResult Index()
         {
             return View();
         }
