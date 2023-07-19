@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WishLibrary.Core\WishLibrary.Core.csproj" />
+    <ProjectReference Include="..\WishLibrary.Infra\WishLibrary.Infra.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WishLibrary.Web", "source\WishLibrary.Web\WishLibrary.Web.csproj", "{F778F800-10F6-46D7-AB93-52CE64B8EB06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishLibrary.Core", "source\WishLibrary.Core\WishLibrary.Core.csproj", "{ACC17278-B52A-4941-96A5-9289EA4CC181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WishLibrary.Core", "source\WishLibrary.Core\WishLibrary.Core.csproj", "{ACC17278-B52A-4941-96A5-9289EA4CC181}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishLibrary.Infra", "source\WishLibrary.Infra\WishLibrary.Infra.csproj", "{CAA37ABD-F57D-476C-912D-5D778A4C61DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{ACC17278-B52A-4941-96A5-9289EA4CC181}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACC17278-B52A-4941-96A5-9289EA4CC181}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACC17278-B52A-4941-96A5-9289EA4CC181}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA37ABD-F57D-476C-912D-5D778A4C61DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA37ABD-F57D-476C-912D-5D778A4C61DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA37ABD-F57D-476C-912D-5D778A4C61DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA37ABD-F57D-476C-912D-5D778A4C61DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
