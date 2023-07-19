@@ -14,11 +14,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Blogs\Controllers\" />
-    <Folder Include="Areas\Blogs\Data\" />
-    <Folder Include="Areas\Blogs\Models\" />
-    <Folder Include="Areas\Blogs\Views\" />
-  </ItemGroup>
-
 </Project>
