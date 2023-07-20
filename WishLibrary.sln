@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WishLibrary.Web", "source\W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WishLibrary.Core", "source\WishLibrary.Core\WishLibrary.Core.csproj", "{ACC17278-B52A-4941-96A5-9289EA4CC181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishLibrary.Infra", "source\WishLibrary.Infra\WishLibrary.Infra.csproj", "{CAA37ABD-F57D-476C-912D-5D778A4C61DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WishLibrary.Infra", "source\WishLibrary.Infra\WishLibrary.Infra.csproj", "{CAA37ABD-F57D-476C-912D-5D778A4C61DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishLibrary.Domain", "WishLibrary.Domain\WishLibrary.Domain.csproj", "{79C6021A-A218-4390-A9EC-5CC5BFC888A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{CAA37ABD-F57D-476C-912D-5D778A4C61DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAA37ABD-F57D-476C-912D-5D778A4C61DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAA37ABD-F57D-476C-912D-5D778A4C61DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79C6021A-A218-4390-A9EC-5CC5BFC888A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C6021A-A218-4390-A9EC-5CC5BFC888A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C6021A-A218-4390-A9EC-5CC5BFC888A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79C6021A-A218-4390-A9EC-5CC5BFC888A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
