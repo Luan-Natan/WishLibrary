@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WishLibrary.Core.Enums
 {
-    public enum RoleEnum
+    public enum RoleUserEnum
     {
         Admin,
-        User
+        Public
     }
 }

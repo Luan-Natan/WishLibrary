@@ -18,10 +18,6 @@ namespace WishLibrary.Infra.Context
             _configuration = configuration;
         }
 
-        public WishLibraryContext(DbContextOptions<WishLibraryContext> options) : base(options)
-        {
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

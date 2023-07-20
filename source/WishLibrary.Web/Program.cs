@@ -1,29 +1,35 @@
 using WishLibrary.Web.Configuration;
 
-var builder = WebApplication.CreateBuilder(args);
-
-//Injeção de Dependência
-DependencyInjection.AddServices(builder.Services);
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+public class Program
 {
-    //app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+    private static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+
+        //Injeção de Dependência
+        DependencyInjection.AddServices(builder.Services);
+
+        // Add services to the container.
+        builder.Services.AddControllersWithViews();
+
+        var app = builder.Build();
+        
+        // Configure the HTTP request pipeline.
+        if (!app.Environment.IsDevelopment())
+        {
+            //app.UseExceptionHandler("~/Views/Home/Index");
+            app.UseHsts();
+        }
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+        app.UseAuthorization();
+
+        //Configure routes
+        RouteConfiguration.AddRoute(app);
+
+        app.Run();
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-app.UseAuthorization();
-
-//Configure routes
-RouteConfiguration.AddRoute(app);
-
-app.Run();
