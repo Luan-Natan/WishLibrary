@@ -10,6 +10,16 @@ namespace WishLibrary.Web.Areas.Admin.Controllers
     {
         #region #Views
 
+        public IActionResult CadastrarGenero()
+        {
+            return View();
+        }
+
+        public IActionResult ListarGenero()
+        {
+            return View();
+        }
+
         public IActionResult CadastrarLivro()
         {
             return View();

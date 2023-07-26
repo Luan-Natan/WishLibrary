@@ -1,0 +1,13 @@
+﻿@model ICollection<Genero>
+@{
+
+}
+
+<option value="" selected>Selecionar...</option>
+@if (ViewBag.Data != null)
+{
+    foreach (var item in ViewBag.Data)
+    {
+        <option value="@item.Id">@item.Nome</option>
+    }
+}

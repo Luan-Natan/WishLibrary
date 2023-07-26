@@ -20,8 +20,8 @@ namespace WishLibrary.Infra.Mappings
                 .HasColumnType("VARCHAR(100)")
                 .IsRequired();
 
-            builder.Property(p => p.AnoLancamento).
-                HasColumnType("DATETIME")
+            builder.Property(p => p.DataLancamento).
+                HasColumnType("DATE")
                 .IsRequired();
 
             builder.HasIndex(p => p.GeneroId);

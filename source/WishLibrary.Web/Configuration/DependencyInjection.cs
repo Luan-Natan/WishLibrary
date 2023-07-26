@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using WishLibrary.Domain.Repositories;
+using WishLibrary.Domain.Repositories.Base;
 using WishLibrary.Domain.Repositories.Interfaces;
 using WishLibrary.Domain.Services;
 using WishLibrary.Domain.Services.Interfaces;
@@ -19,7 +20,9 @@ namespace WishLibrary.Web.Configuration
 
         private static IServiceCollection ConfigureRepositories(IServiceCollection services)
         {
+            services.AddScoped<IBaseRepository, BaseRepository>();
             services.AddScoped<IGeneroRepository, GeneroRepository>();
+            services.AddScoped<ILivroRepository, LivroRepository>();
 
             return services;
         }
@@ -27,6 +30,7 @@ namespace WishLibrary.Web.Configuration
         private static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IGeneroService, GeneroService>();
+            services.AddScoped<ILivroService, LivroService>();
 
             return services;
         }

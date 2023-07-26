@@ -27,7 +27,7 @@ public class Program
         app.UseRouting();
         app.UseAuthorization();
 
-        //Configure routes
+        //Configuração de rotas
         RouteConfiguration.AddRoute(app);
 
         app.Run();

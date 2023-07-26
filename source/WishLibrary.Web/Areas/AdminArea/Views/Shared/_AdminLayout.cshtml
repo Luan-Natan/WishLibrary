@@ -10,7 +10,6 @@
     <title>WishLibrary</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WishLibrary.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header class="">
@@ -30,6 +29,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="AdminArea" asp-controller="Admin" asp-action="PainelControle">Painel de Controle</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="AdminArea" asp-controller="Admin" asp-action="CadastrarGenero">Cadastrar Gênero</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="AdminArea" asp-controller="Admin" asp-action="CadastrarLivro">Cadastrar Livro</a>
                         </li>
@@ -47,9 +50,7 @@
         <p>&copy; @ViewBag.AnoAtual - WishLibrary</p>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await Html.PartialAsync("_ScriptImports.cshtml")
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

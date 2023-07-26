@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Areas\Admin\js\genero.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.20">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,9 +23,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\WishLibrary.Domain\WishLibrary.Domain.csproj" />
     <ProjectReference Include="..\WishLibrary.Core\WishLibrary.Core.csproj" />
+    <ProjectReference Include="..\WishLibrary.Domain\WishLibrary.Domain.csproj" />
     <ProjectReference Include="..\WishLibrary.Infra\WishLibrary.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Areas\Standard\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Areas\Admin\js\genero.js" />
   </ItemGroup>
 
 </Project>

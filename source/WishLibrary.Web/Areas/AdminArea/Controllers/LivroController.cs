@@ -5,27 +5,27 @@ using WishLibrary.Domain.Services.Interfaces;
 namespace WishLibrary.Web.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
-    [Route(nameof(Genero))]
-    public class GeneroController : Controller
+    [Route(nameof(Livro))]
+    public class LivroController : Controller
     {
-        private readonly IGeneroService _generoService;
+        private readonly ILivroService _livroService;
         private readonly IConfiguration _configuration;
 
-        public GeneroController(IGeneroService generoService, IConfiguration configuration)
+        public LivroController(ILivroService LivroService, IConfiguration configuration)
         {
-            _generoService = generoService;
+            _livroService = LivroService;
             _configuration = configuration;
         }
 
         #region #Actions
 
         [HttpPost("Cadastrar")]
-        public async Task<IActionResult> CadastrarGenero(Genero genero)
+        public async Task<IActionResult> CadastrarLivro(Livro Livro)
         {
             try
             {
-                await _generoService.CadastrarGenero(genero);
-                return RedirectToAction("CadastrarGenero", "Admin");
+                await _livroService.CadastrarLivro(Livro);
+                return RedirectToAction("Index", "HomeAdmin");
             }
             catch (Exception)
             {
@@ -35,14 +35,12 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers
         }
 
         [HttpGet("Listar")]
-        public async Task<IActionResult> ListarGeneros()
+        public async Task<IActionResult> ListaLivros()
         {
             try
             {
-                var generos = await _generoService.ObterGeneros();
-                ViewBag.Data = generos;
-
-                return PartialView(_configuration["Partials:Admin"] + "_ListarGeneros.cshtml", generos);
+                var livros = await _livroService.ObterLivros();
+                return Ok(livros?.ToList());
             }
             catch (Exception)
             {
