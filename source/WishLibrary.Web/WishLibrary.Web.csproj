@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Areas\Admin\js\genero.js" />
+    <Content Remove="wwwroot\areas\Admin\js\genero.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,11 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Areas\Standard\" />
+    <Folder Include="wwwroot\areas\Standard\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Areas\Admin\js\genero.js" />
+    <None Include="wwwroot\areas\Admin\js\genero.js" />
   </ItemGroup>
 
 </Project>
