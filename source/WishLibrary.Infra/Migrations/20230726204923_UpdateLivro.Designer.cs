@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WishLibrary.Infra.Context;
 
@@ -11,9 +12,10 @@ using WishLibrary.Infra.Context;
 namespace WishLibrary.Infra.Migrations
 {
     [DbContext(typeof(WishLibraryContext))]
-    partial class WishLibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20230726204923_UpdateLivro")]
+    partial class UpdateLivro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -4,6 +4,7 @@ namespace WishLibrary.Domain.Repositories.Interfaces
 {
     public interface IGeneroRepository
     {
-        Task<Genero> Create(Genero genero);
+        Task<ICollection<Genero>?> ObterGeneros();
+        Task<Genero?> ObterGeneroPorId(int id);
     }
 }
