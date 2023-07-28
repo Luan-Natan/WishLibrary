@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\areas\Admin\js\genero.js" />
+    <Content Remove="wwwroot\areas\Admin\js\livro.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\areas\Admin\js\livro.js" />
     <None Include="wwwroot\areas\Admin\js\genero.js" />
   </ItemGroup>
 

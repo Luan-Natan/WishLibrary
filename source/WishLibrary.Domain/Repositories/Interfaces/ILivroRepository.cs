@@ -4,7 +4,7 @@ namespace WishLibrary.Domain.Repositories.Interfaces
 {
     public interface ILivroRepository
     {
-        Task<ICollection<Livro>?> ObterLivros();
-        Task<Livro?> ObterLivroPorId(int id);
+        Task<ICollection<Livro>?> ObterLivrosComIncludes();
+        Task<Livro?> ObterLivroPorIdComIncludes(int id);
     }
 }

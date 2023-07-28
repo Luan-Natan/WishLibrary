@@ -1,5 +1,5 @@
 ﻿
-//Método POST para listar Generos
+//Método GET para listar Generos
 $(document).ready(function () {
     $.ajax({
         type: 'GET',

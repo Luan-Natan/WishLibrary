@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WishLibrary.Core.Models;
+using WishLibrary.Domain.Services;
 using WishLibrary.Domain.Services.Interfaces;
 
 namespace WishLibrary.Web.Areas.AdminArea.Controllers
@@ -25,7 +26,7 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers
             try
             {
                 await _livroService.CadastrarLivro(Livro);
-                return RedirectToAction("Index", "HomeAdmin");
+                return RedirectToAction("CadastrarLivro", "Admin");
             }
             catch (Exception)
             {
@@ -35,19 +36,20 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers
         }
 
         [HttpGet("Listar")]
-        public async Task<IActionResult> ListaLivros()
+        public async Task<IActionResult> ListarLivros()
         {
             try
             {
-                var livros = await _livroService.ObterLivros();
-                return Ok(livros?.ToList());
+               var livros = await _livroService.ObterLivros();
+                return Ok(livros);
             }
             catch (Exception)
             {
-                return View(_configuration["Layouts:Error"]);
+                //return View(_configuration["Layouts:Error"]);
                 throw;
             }
         }
+
         #endregion
     }
 }

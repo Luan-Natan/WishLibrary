@@ -39,10 +39,8 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers
         {
             try
             {
-                var generos = await _generoService.ObterGeneros();
-                ViewBag.Data = generos;
-
-                return PartialView(_configuration["Partials:Admin"] + "_ListarGeneros.cshtml", generos);
+                ViewBag.Data = await _generoService.ObterGeneros();
+                return PartialView(_configuration["Partials:Admin"] + "_ListarGeneros.cshtml", ViewBag.Data);
             }
             catch (Exception)
             {
@@ -50,6 +48,7 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers
                 throw;
             }
         }
+
         #endregion
     }
 }

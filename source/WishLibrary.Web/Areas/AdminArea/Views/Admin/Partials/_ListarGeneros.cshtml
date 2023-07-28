@@ -4,7 +4,7 @@
 }
 
 <option value="" selected>Selecionar...</option>
-@if (ViewBag.Data != null)
+@if (ViewBag.Data is not null)
 {
     foreach (var item in ViewBag.Data)
     {

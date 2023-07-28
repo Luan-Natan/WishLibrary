@@ -6,6 +6,8 @@ namespace WishLibrary.Domain.Services.Interfaces
     {
         Task CadastrarGenero(Genero genero);
         Task<ICollection<Genero>?> ObterGeneros();
-        Task<Genero?>ObterGeneroPorId(int id);
+        Task<Genero?> ObterGeneroPorId(int id);
+        Task<Genero?> DeletarGenero(int id);
+        Task<Genero?> AtualizarGenero(int id);
     }
 }
