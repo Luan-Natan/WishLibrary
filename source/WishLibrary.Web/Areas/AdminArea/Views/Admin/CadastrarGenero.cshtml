@@ -1,0 +1,23 @@
+﻿@model Genero
+@{
+    ViewBag.Titulo = "Cadastrar Gênero".ToUpper();
+}
+
+<div class="">
+
+    <h1 class="">
+        @ViewBag.Titulo
+    </h1>
+
+    <form class="was-validated" asp-area="AdminArea" asp-controller="Genero" asp-action="CadastrarGenero" method="post">
+        <div class="my-3">
+            <label for="nome">Nome do Gênero</label>
+            <input class="form-control is-valid" maxlength="100" type="text" asp-for="Nome" required>
+            <div class="invalid-feedback">Digite um gênero! (100 caracteres)</div>
+        </div>
+
+        <div class="my-3">
+            <button class="btn btn-success" type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
