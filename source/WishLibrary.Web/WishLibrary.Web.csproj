@@ -10,11 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\areas\Admin\js\genero.js" />
-    <Content Remove="wwwroot\areas\Admin\js\livro.js" />
+    <Content Remove="wwwroot\areas\Admin\js\scriptAdmin.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.20">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,18 +25,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WishLibrary.Application\WishLibrary.Application.csproj" />
     <ProjectReference Include="..\WishLibrary.Core\WishLibrary.Core.csproj" />
     <ProjectReference Include="..\WishLibrary.Domain\WishLibrary.Domain.csproj" />
     <ProjectReference Include="..\WishLibrary.Infra\WishLibrary.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\areas\Standard\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\areas\Admin\js\livro.js" />
-    <None Include="wwwroot\areas\Admin\js\genero.js" />
+    <None Include="wwwroot\areas\Admin\js\scriptAdmin.js" />
   </ItemGroup>
 
 </Project>

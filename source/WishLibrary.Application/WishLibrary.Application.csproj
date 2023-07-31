@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WishLibrary.Core\WishLibrary.Core.csproj" />
+    <ProjectReference Include="..\WishLibrary.Domain\WishLibrary.Domain.csproj" />
   </ItemGroup>
 
 </Project>

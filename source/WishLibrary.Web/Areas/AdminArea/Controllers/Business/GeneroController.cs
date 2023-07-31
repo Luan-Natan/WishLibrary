@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WishLibrary.Core.Models;
 using WishLibrary.Domain.Services.Interfaces;
 
-namespace WishLibrary.Web.Areas.AdminArea.Controllers
+namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
 {
     [Area("AdminArea")]
     [Route(nameof(Genero))]
@@ -40,7 +41,8 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers
             try
             {
                 ViewBag.Data = await _generoService.ObterGeneros();
-                return PartialView(_configuration["Partials:Admin"] + "_ListarGeneros.cshtml", ViewBag.Data);
+
+                return Ok();
             }
             catch (Exception)
             {
