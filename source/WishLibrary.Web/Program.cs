@@ -1,8 +1,11 @@
+using AspNetCoreHero.ToastNotification.Extensions;
+using Microsoft.AspNetCore.Builder;
+using System.Diagnostics;
 using WishLibrary.Web.Configuration;
 
 public class Program
 {
-    private static void Main(string[] args)
+    public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,7 @@ public class Program
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
-        
+
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
@@ -26,6 +29,9 @@ public class Program
 
         app.UseRouting();
         app.UseAuthorization();
+
+        //Configure notification
+        app.UseNotyf();
 
         //Configuração de rotas
         RouteConfiguration.AddRoute(app);

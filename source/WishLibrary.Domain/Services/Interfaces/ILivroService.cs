@@ -6,6 +6,8 @@ namespace WishLibrary.Domain.Services.Interfaces
     {
         Task CadastrarLivro(Livro Livro);
         Task<ICollection<Livro>?> ObterLivros();
-        Task<Livro?>ObterLivroPorId(int id);
+        Task<Livro?> ObterLivroPorId(int id);
+        Task<Livro?> DeletarLivro(int id);
+        Task<Livro?> AtualizarLivro(int id);
     }
 }

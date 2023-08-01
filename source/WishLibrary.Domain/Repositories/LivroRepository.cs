@@ -14,14 +14,19 @@ namespace WishLibrary.Domain.Repositories
             _context = context;
         }
 
-        public async Task<Livro?> ObterLivroPorId(int id)
+        public async Task<ICollection<Livro>?> ObterLivrosComIncludes()
         {
-           return await _context.Livro.AsQueryable().Where(g => g.Id == id).FirstOrDefaultAsync();
+            return await _context.Livro.AsQueryable()
+                                       .Include(livro => livro.Genero)
+                                       .ToListAsync();
         }
 
-        public async Task<ICollection<Livro>?> ObterLivros()
+        public async Task<Livro?> ObterLivroPorIdComIncludes(int id)
         {
-            return await _context.Livro.AsQueryable().ToListAsync();
+            return await _context.Livro.Where(livro => livro.Id == id)
+                           .AsQueryable()
+                           .Include(livro => livro.Genero)
+                           .FirstOrDefaultAsync();
         }
     }
 }

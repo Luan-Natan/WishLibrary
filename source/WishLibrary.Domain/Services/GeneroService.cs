@@ -6,28 +6,42 @@ namespace WishLibrary.Domain.Services
 {
     public class GeneroService : IGeneroService
     {
-        private readonly IGeneroRepository _generoRepository;
         private readonly IBaseRepository _baseRepository;
 
-        public GeneroService(IGeneroRepository generoRepository, IBaseRepository baseRepository)
+        public GeneroService(IBaseRepository baseRepository)
         {
-            _generoRepository = generoRepository;
             _baseRepository = baseRepository;
         }
 
         public async Task<Genero?> ObterGeneroPorId(int id)
         {
-            return await _generoRepository.ObterGeneroPorId(id);
+            return await _baseRepository.ObterporId<Genero>(id);
         }
 
         public async Task<ICollection<Genero>?> ObterGeneros()
         {
-            return await _generoRepository.ObterGeneros();
+            return await _baseRepository.ObterTudo<Genero>();
         }
 
         public async Task CadastrarGenero(Genero genero)
         {
             await _baseRepository.Adicionar(genero);
+        }
+
+        public async Task<Genero?> DeletarGenero(int id)
+        {
+            var genero = await _baseRepository.ObterporId<Genero>(id);
+            await _baseRepository.Apagar<Genero>(genero);
+
+            return genero;
+        }
+
+        public async Task<Genero?> AtualizarGenero(int id)
+        {
+            var genero = await _baseRepository.ObterporId<Genero>(id);
+            await _baseRepository.Atualizar<Genero>(genero);
+
+            return genero;
         }
     }
 }

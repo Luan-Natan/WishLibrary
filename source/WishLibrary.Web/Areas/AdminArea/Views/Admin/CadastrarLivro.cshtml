@@ -1,4 +1,4 @@
-﻿@model Livro
+﻿@model CadastrarLivroDto
 @{
     ViewBag.Titulo = "Cadastrar Livro".ToUpper();
 }
@@ -11,8 +11,8 @@
 
     <form class="was-validated" asp-area="AdminArea" asp-controller="Livro" asp-action="CadastrarLivro" method="post">
         <div class="my-3">
-            <label for="nome">Nome do livro</label>
-            <input class="form-control is-valid" maxlength="100" type="text" asp-for="Nome" required>
+            <label for="nomeLivro">Nome do livro</label>
+            <input class="form-control is-valid" maxlength="100" type="text" asp-for="NomeLivro" required>
             <div class="invalid-feedback">Digite um nome! (100 caracteres)</div>
         </div>
 
@@ -24,8 +24,8 @@
 
         <div class="my-3">
             <label for="genero">Gênero</label>
-            <select class="custom-select is-valid select" id="listarGeneros" asp-for="GeneroId" required>
-                @await Html.PartialAsync(Configuration["Partials:Admin"] + "_ListarGeneros.cshtml")
+            <select class="custom-select is-valid select" id="listarGeneros" asp-for="IdGenero" asp-items="@ViewBag.ListarGeneros" required>
+                <option value="" selected>Selecionar...</option>
             </select>
             <div class="invalid-feedback">Selecione um gênero!</div>
         </div>
