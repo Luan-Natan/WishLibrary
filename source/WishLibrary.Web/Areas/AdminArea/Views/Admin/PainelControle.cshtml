@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PaginacaoRequestDto
+@{
     ViewBag.Titulo = "Painel de Controle".ToUpper();
 }
 
@@ -14,6 +15,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Data de lançamento</th>
+                        <th scope="col">Paginas</th>
                     </tr>
                 </thead>
                 <tbody id="listarLivros">
@@ -22,7 +24,8 @@
                         <tr>
                             <th scope="row">@item.Id</th>
                             <td>@item.Nome</td>
-                            <td>@item.DataLancamento</td>
+                            <td>@item.DataLancamento.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Paginacao.NumeroPaginas</td>
                         </tr>
                     }
                 </tbody>
@@ -33,4 +36,21 @@
             <p><b>Sem itens para mostrar!</b></p>
         }
     }
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+
 </div>
