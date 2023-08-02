@@ -5,7 +5,6 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using WishLibrary.Application.Queries.Base;
 using WishLibrary.Application.Queries.Interfaces;
-using WishLibrary.Core.Models;
 
 namespace WishLibrary.Application.Queries
 {
@@ -26,24 +25,18 @@ namespace WishLibrary.Application.Queries
             }
         }
 
-        public IEnumerable<ObterLivroDto>? PaginationObject(PaginacaoRequestDto obj)
+        public IEnumerable<ObterLivroDto>? PaginationLivro(PaginacaoRequestDto obj)
         {
             try
             {
-                var campos = $@"S.Id AS Id
-							,S.Nome AS Nome
-							,S.GeneroId AS GeneroId
-							,S.DataLancamento AS DataLancamento";
-
                 using IDbConnection connection = Connection;
-                var query = PaginacaoDbScript.GenericPaginationDbScript(obj, campos);
-                var response = connection.DapperSearch<ObterLivroDto>(query);
+                var query = PaginacaoDbScript.GenericPaginationDbScript(obj, "T_LIVRO");
+                var response = connection.SlapperSearch<ObterLivroDto>(query);
                 return response.ToList();
 
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

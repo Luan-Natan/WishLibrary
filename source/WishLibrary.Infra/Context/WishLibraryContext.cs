@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WishLibrary.Core.Models;
 

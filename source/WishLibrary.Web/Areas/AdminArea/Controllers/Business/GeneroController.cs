@@ -2,12 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using WishLibrary.Application.Commands.CadastrarGenero;
 using WishLibrary.Core.DTOs;
-using WishLibrary.Core.Models;
 
 namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
 {
     [Area("AdminArea")]
-    [Route(nameof(Genero))]
     public class GeneroController : Controller
     {
         private readonly IMediator _mediator;
@@ -21,7 +19,7 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
 
         #region #Actions
 
-        [HttpPost("Cadastrar")]
+        //POST: Cadastrar
         public async Task<IActionResult> CadastrarGenero(CadastrarGeneroDto genero)
         {
             try

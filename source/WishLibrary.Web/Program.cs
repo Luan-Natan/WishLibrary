@@ -1,6 +1,4 @@
 using AspNetCoreHero.ToastNotification.Extensions;
-using Microsoft.AspNetCore.Builder;
-using System.Diagnostics;
 using WishLibrary.Web.Configuration;
 
 public class Program
@@ -30,7 +28,7 @@ public class Program
         app.UseRouting();
         app.UseAuthorization();
 
-        //Configure notification
+        //Configução de notificação do Notyf
         app.UseNotyf();
 
         //Configuração de rotas

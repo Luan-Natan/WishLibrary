@@ -5,7 +5,7 @@ namespace WishLibrary.Application.Queries.Base
 {
     public static class BaseQuery
     {
-        public static IEnumerable<T> DapperSearch<T>(this IDbConnection connection, Dictionary<string, object> query)
+        public static IEnumerable<T> SlapperSearch<T>(this IDbConnection connection, Dictionary<string, object> query)
         {
             IEnumerable<T> response = null;
             try
@@ -14,7 +14,7 @@ namespace WishLibrary.Application.Queries.Base
                 {
                     connection.Open();
                     var data = connection.Query<dynamic>(item.Key, item.Value);
-                    response = (Slapper.AutoMapper.MapDynamic<T>(data) as IEnumerable<T>);
+                    response = Slapper.AutoMapper.MapDynamic<T>(data);
                     Slapper.AutoMapper.Cache.ClearAllCaches();
                 }
 
