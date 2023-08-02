@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using WishLibrary.Application.Commands.CadastrarGenero;
+using WishLibrary.Core.DTOs;
 using WishLibrary.Core.Models;
-using WishLibrary.Domain.Services.Interfaces;
 
 namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
 {
@@ -9,44 +10,30 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
     [Route(nameof(Genero))]
     public class GeneroController : Controller
     {
-        private readonly IGeneroService _generoService;
+        private readonly IMediator _mediator;
         private readonly IConfiguration _configuration;
 
-        public GeneroController(IGeneroService generoService, IConfiguration configuration)
+        public GeneroController(IConfiguration configuration, IMediator mediator)
         {
-            _generoService = generoService;
             _configuration = configuration;
+            _mediator = mediator;
         }
 
         #region #Actions
 
         [HttpPost("Cadastrar")]
-        public async Task<IActionResult> CadastrarGenero(Genero genero)
+        public async Task<IActionResult> CadastrarGenero(CadastrarGeneroDto genero)
         {
             try
             {
-                await _generoService.CadastrarGenero(genero);
+                var command = new CadastrarGeneroCommand(genero);
+                var response = await _mediator.Send(command);
+
                 return RedirectToAction("CadastrarGenero", "Admin");
             }
             catch (Exception)
             {
-                return View(_configuration["Layouts:Error"]);
-                throw;
-            }
-        }
-
-        [HttpGet("Listar")]
-        public async Task<IActionResult> ListarGeneros()
-        {
-            try
-            {
-                ViewBag.Data = await _generoService.ObterGeneros();
-
-                return Ok();
-            }
-            catch (Exception)
-            {
-                return View(_configuration["Layouts:Error"]);
+                //return View(_configuration["Layouts:Error"]);
                 throw;
             }
         }

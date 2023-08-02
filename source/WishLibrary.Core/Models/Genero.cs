@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WishLibrary.Core.Models
+﻿namespace WishLibrary.Core.Models
 {
     public class Genero
     {
@@ -12,5 +6,10 @@ namespace WishLibrary.Core.Models
         public string Nome { get; set; }
 
         public virtual ICollection<Livro> Livros { get; set; }
+
+        public Genero(string nome)
+        {
+            Nome = nome;
+        }
     }
 }

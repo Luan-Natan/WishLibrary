@@ -1,7 +1,10 @@
 ﻿
 using AspNetCoreHero.ToastNotification;
 using MediatR;
+using WishLibrary.Application.Commands.CadastrarGenero;
 using WishLibrary.Application.Commands.CadastrarLivro;
+using WishLibrary.Application.Queries;
+using WishLibrary.Application.Queries.Interfaces;
 using WishLibrary.Core.Models;
 using WishLibrary.Domain.Repositories;
 using WishLibrary.Domain.Repositories.Base;
@@ -42,6 +45,7 @@ namespace WishLibrary.Web.Configuration
         {
             services.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(Program).Assembly));
             services.AddScoped<IRequestHandler<CadastrarLivroCommand, Livro?>, CadastrarLivroCommandHandler>();
+            services.AddScoped<IRequestHandler<CadastrarGeneroCommand, Genero?>, CadastrarGeneroCommandHandler>();
 
             return services;
         }
@@ -58,13 +62,21 @@ namespace WishLibrary.Web.Configuration
             return services;
         }
 
+        private static IServiceCollection ConfigureQueries(IServiceCollection services)
+        {
+            services.AddScoped<ILivroQuery, LivroQuery>();
+
+            return services;
+        }
+
         public static IServiceCollection AddServices(IServiceCollection services)
         {
+            ConfigureNotifications(services);
+            ConfigureQueries(services);
             ConfigureContext(services);
             ConfigureServices(services);
             ConfigureCommands(services);
             ConfigureRepositories(services);
-            ConfigureNotifications(services);
 
             return services;
         }

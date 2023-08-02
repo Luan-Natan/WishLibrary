@@ -13,12 +13,14 @@
         <div class="my-3">
             <label for="nomeLivro">Nome do livro</label>
             <input class="form-control is-valid" maxlength="100" type="text" asp-for="NomeLivro" required>
+            
             <div class="invalid-feedback">Digite um nome! (100 caracteres)</div>
         </div>
 
         <div class="my-3">
             <label for="dataLancamento">Mês/Ano de lançamento</label>
             <input class="form-control is-valid" type="date" id="anoMask" asp-for="DataLancamento" required />
+            
             <div class="invalid-feedback">Selecione uma data!</div>
         </div>
 
@@ -27,6 +29,7 @@
             <select class="custom-select is-valid select" id="listarGeneros" asp-for="IdGenero" asp-items="@ViewBag.ListarGeneros" required>
                 <option value="" selected>Selecionar...</option>
             </select>
+            
             <div class="invalid-feedback">Selecione um gênero!</div>
         </div>
 
