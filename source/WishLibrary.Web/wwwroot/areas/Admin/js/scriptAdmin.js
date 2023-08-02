@@ -1,5 +1,4 @@
-﻿
-//Método GET para listar Generos
+﻿//Método GET para listar Generos
 //window.onload = function () {
 //    $.ajax({
 //        type: 'GET',

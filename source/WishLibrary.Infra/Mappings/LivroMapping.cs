@@ -1,10 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WishLibrary.Core.Models;
 
 namespace WishLibrary.Infra.Mappings
@@ -16,7 +10,7 @@ namespace WishLibrary.Infra.Mappings
             builder.ToTable("T_LIVRO");
             builder.HasKey(p => p.Id);
 
-            builder.Property(p=>p.Nome)
+            builder.Property(p => p.Nome)
                 .HasColumnType("VARCHAR(100)")
                 .IsRequired();
 

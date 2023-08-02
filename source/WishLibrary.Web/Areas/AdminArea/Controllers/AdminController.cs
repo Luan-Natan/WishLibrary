@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WishLibrary.Application.Queries.Interfaces;
 using WishLibrary.Core.DTOs;
-using WishLibrary.Core.Models;
 using WishLibrary.Domain.Services.Interfaces;
 
 namespace WishLibrary.Web.Areas.Admin.Controllers
@@ -42,11 +41,20 @@ namespace WishLibrary.Web.Areas.Admin.Controllers
 
         public async Task<IActionResult> PainelControle(PaginacaoRequestDto obj)
         {
-            //ViewBag.ListarLivros = await _livroService.ObterLivros();
-            obj = new PaginacaoRequestDto(3, 5, "T_LIVRO");
-            ViewBag.ListarLivros = _livroQuery.PaginationObject(obj);
+            obj = new PaginacaoRequestDto(obj.PaginaAtual, obj.TamanhoPagina);
 
-            return View();
+            //Livros
+            var listaLivro = _livroQuery.PaginationLivro(obj);
+            var numeroPaginasLivro = listaLivro.FirstOrDefault()?.Paginacao?.NumeroPaginas;
+            ViewBag.LivrosList = new
+            {
+                Result = listaLivro,
+                NumeroPaginas = numeroPaginasLivro,
+                PaginaAnterior = obj.PaginaAtual == 1 ? 1 : obj.PaginaAtual - 1,
+                ProximaPagina = obj.PaginaAtual == numeroPaginasLivro ? numeroPaginasLivro : obj.PaginaAtual + 1
+            };
+
+            return View(obj);
         }
 
         #endregion
