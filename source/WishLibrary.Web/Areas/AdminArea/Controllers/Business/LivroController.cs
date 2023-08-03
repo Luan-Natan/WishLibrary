@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WishLibrary.Application.Commands.CadastrarLivro;
+using WishLibrary.Application.Commands.PainelControle;
 using WishLibrary.Application.Queries.Interfaces;
 using WishLibrary.Core.DTOs;
+using WishLibrary.Core.Enums;
 
 namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
 {
@@ -45,7 +47,13 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
             try
             {
                 obj = new PaginacaoRequestDto(obj.PaginaAtual, obj.TamanhoPagina);
-                ViewBag.ListarLivros = _livroQuery.PaginationLivro(obj);
+                
+                var command = new PainelControleCommand(obj, PainelControleEnum.Livro);
+                var response = _mediator.Send(command);
+                ViewBag.LivroList = response;
+
+
+                ViewBag.ListarLivros = _livroQuery.ObterLivroPorPaginacao(obj);
 
                 return RedirectToAction("PainelControle", "Admin", obj);
             }

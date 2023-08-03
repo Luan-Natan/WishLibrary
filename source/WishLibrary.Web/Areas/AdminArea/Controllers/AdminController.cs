@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using WishLibrary.Application.Commands.CadastrarLivro;
+using WishLibrary.Application.Commands.PainelControle;
 using WishLibrary.Application.Queries.Interfaces;
 using WishLibrary.Core.DTOs;
+using WishLibrary.Core.Enums;
+using WishLibrary.Core.Models;
 using WishLibrary.Domain.Services.Interfaces;
 
 namespace WishLibrary.Web.Areas.Admin.Controllers
@@ -12,12 +17,14 @@ namespace WishLibrary.Web.Areas.Admin.Controllers
         private readonly ILivroQuery _livroQuery;
         private readonly ILivroService _livroService;
         private readonly IGeneroService _generoService;
+        private readonly IMediator _mediator;
 
-        public AdminController(ILivroService livroService, IGeneroService generoService, ILivroQuery livroQuery)
+        public AdminController(ILivroService livroService, IGeneroService generoService, ILivroQuery livroQuery, IMediator mediator)
         {
             _livroService = livroService;
             _generoService = generoService;
             _livroQuery = livroQuery;
+            _mediator = mediator;
         }
 
         #region #Views
@@ -43,16 +50,9 @@ namespace WishLibrary.Web.Areas.Admin.Controllers
         {
             obj = new PaginacaoRequestDto(obj.PaginaAtual, obj.TamanhoPagina);
 
-            //Livros
-            var listaLivro = _livroQuery.PaginationLivro(obj);
-            var numeroPaginasLivro = listaLivro.FirstOrDefault()?.Paginacao?.NumeroPaginas;
-            ViewBag.LivrosList = new
-            {
-                Result = listaLivro,
-                NumeroPaginas = numeroPaginasLivro,
-                PaginaAnterior = obj.PaginaAtual == 1 ? 1 : obj.PaginaAtual - 1,
-                ProximaPagina = obj.PaginaAtual == numeroPaginasLivro ? numeroPaginasLivro : obj.PaginaAtual + 1
-            };
+            var command = new PainelControleCommand(obj, PainelControleEnum.Livro);
+            var response = await _mediator.Send(command);
+            ViewBag.LivroList = response;
 
             return View(obj);
         }

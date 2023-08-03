@@ -2,22 +2,24 @@
 }
 
 @{
-    if (ViewBag.LivrosList.Result is not null)
+    if (ViewBag.LivroList.Result is not null)
     {
         <table class="table" id="tabela">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Gênero</th>
                     <th scope="col">Data de lançamento</th>
                 </tr>
             </thead>
             <tbody id="listarLivros">
-                @foreach (var item in ViewBag.LivrosList.Result)
+                @foreach (var item in ViewBag.LivroList.Result)
                 {
                     <tr>
-                        <th scope="row">@item.Id</th>
-                        <td>@item.Nome</td>
+                        <th scope="row">@item.IdLivro</th>
+                        <td>@item.NomeLivro</td>
+                        <td>@item.NomeGenero</td>
                         <td>@item.DataLancamento.ToString("dd/MM/yyyy")</td>
                     </tr>
                 }

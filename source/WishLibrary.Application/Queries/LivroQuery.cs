@@ -25,15 +25,16 @@ namespace WishLibrary.Application.Queries
             }
         }
 
-        public IEnumerable<ObterLivroDto>? PaginationLivro(PaginacaoRequestDto obj)
+        public IEnumerable<ObterLivroDto>? ObterLivroPorPaginacao(PaginacaoRequestDto obj)
         {
             try
             {
                 using IDbConnection connection = Connection;
-                var query = PaginacaoDbScript.GenericPaginationDbScript(obj, "T_LIVRO");
-                var response = connection.SlapperSearch<ObterLivroDto>(query);
+                var query = LivroDbScript.ObterLivroPorPaginacao();
+                var paginar = PaginacaoDbScript.GenericPaginationDbScript(obj, query, "IdLivro");
+                
+                var response = connection.SlapperSearch<ObterLivroDto>(paginar);
                 return response.ToList();
-
             }
             catch (Exception)
             {

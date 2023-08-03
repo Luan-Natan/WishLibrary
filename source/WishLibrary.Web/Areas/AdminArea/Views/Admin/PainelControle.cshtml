@@ -24,14 +24,14 @@
 
             <li class="page-item">
                 @{
-                    Model.PaginaAtual = ViewBag.LivrosList.PaginaAnterior;
+                    Model.PaginaAtual = ViewBag.LivroList.PaginaAnterior;
                     @Html.ActionLink("Anterior", "ObterLivros", "Livro", Model, new { @class = "page-link" })
                     ;
                 }
             </li>
 
             @{
-                for (int i = 1; i <= ViewBag.LivrosList.NumeroPaginas; i++)
+                for (int i = 1; i <= ViewBag.LivroList.NumeroPaginas; i++)
                 {
                     Model.PaginaAtual = i;
                     <li class="page-item"> @Html.ActionLink(i.ToString(),"ObterLivros","Livro", Model, new { @class = "page-link"}) </li>
@@ -40,7 +40,7 @@
 
             <li class="page-item">
                 @{
-                    Model.PaginaAtual = ViewBag.LivrosList.ProximaPagina;
+                    Model.PaginaAtual = ViewBag.LivroList.ProximaPagina;
                     @Html.ActionLink("Próximo", "ObterLivros", "Livro", Model, new { @class = "page-link" })
                     ;
                 }

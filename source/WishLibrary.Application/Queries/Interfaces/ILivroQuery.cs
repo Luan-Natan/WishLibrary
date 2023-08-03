@@ -5,6 +5,6 @@ namespace WishLibrary.Application.Queries.Interfaces
 {
     public interface ILivroQuery
     {
-        IEnumerable<ObterLivroDto>? PaginationLivro(PaginacaoRequestDto obj);
+        IEnumerable<ObterLivroDto>? ObterLivroPorPaginacao(PaginacaoRequestDto obj);
     }
 }

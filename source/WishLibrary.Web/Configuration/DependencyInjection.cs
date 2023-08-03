@@ -3,6 +3,7 @@ using AspNetCoreHero.ToastNotification;
 using MediatR;
 using WishLibrary.Application.Commands.CadastrarGenero;
 using WishLibrary.Application.Commands.CadastrarLivro;
+using WishLibrary.Application.Commands.PainelControle;
 using WishLibrary.Application.Queries;
 using WishLibrary.Application.Queries.Interfaces;
 using WishLibrary.Core.Models;
@@ -46,6 +47,7 @@ namespace WishLibrary.Web.Configuration
             services.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(Program).Assembly));
             services.AddScoped<IRequestHandler<CadastrarLivroCommand, Livro?>, CadastrarLivroCommandHandler>();
             services.AddScoped<IRequestHandler<CadastrarGeneroCommand, Genero?>, CadastrarGeneroCommandHandler>();
+            services.AddScoped<IRequestHandler<PainelControleCommand, object?>, PainelControleCommandHandler>();
 
             return services;
         }

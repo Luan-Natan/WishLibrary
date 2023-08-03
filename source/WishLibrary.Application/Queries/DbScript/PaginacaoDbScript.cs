@@ -4,45 +4,39 @@ namespace WishLibrary.Application.Queries.DbScript
 {
     public class PaginacaoDbScript
     {
-
-        public static Dictionary<string, object> GenericPaginationDbScript(PaginacaoRequestDto obj, string nomeTabela)
+        public static Dictionary<string, object> GenericPaginationDbScript(PaginacaoRequestDto obj, Dictionary<string, object> script, string orderById)
         {
-            var sql = $@"DECLARE @PagAtual INT = @PaginaAtual,
-								@TamPag	   INT = @TamanhoPagina,
-								@Deslocar  INT = 0,			
-								@NumPags   INT = 0,
-								@Resultado INT = (SELECT COUNT(*) FROM {nomeTabela});
+            var result = new Dictionary<string, object>();
+
+            foreach (KeyValuePair<string, object> item in script)
+            {
+
+                var sql = $@"DECLARE @PagAtual  INT = {obj.PaginaAtual},
+									 @TamPag	INT = {obj.TamanhoPagina},
+									 @Deslocar  INT,
+									 @NumPags   INT;
 
 						SET @Deslocar = @TamPag * (@PagAtual - 1);
 
-						WHILE @Resultado > 0
-						BEGIN
-							SET @Resultado = @Resultado - @TamPag;
-							SET @NumPags += 1
-						END;
-
 						WITH SEQUENCIA AS 
-						(SELECT *, ROW_NUMBER() OVER(ORDER BY Id) AS Seq FROM {nomeTabela})
+						(
+							{item.Key}
+						)
 
-						SELECT 
-							 *
-							,S.Seq As Paginacao_Sequencia
-							,@NumPags AS Paginacao_NumeroPaginas 
+						SELECT *, (SELECT TOP(1) SEQ.Paginacao_Sequencia FROM SEQUENCIA AS SEQ ORDER BY SEQ.{orderById} DESC) / @TamPag AS Paginacao_NumeroPaginas
 						FROM SEQUENCIA AS S
-						WHERE S.Seq BETWEEN (CASE WHEN @Deslocar = 0 THEN 1 
-											 ELSE @Deslocar + 1 END) 
-									 AND
-											(CASE WHEN @Deslocar = 0 THEN @TamPag
-											 ELSE (@Deslocar + @TamPag) END)
-						ORDER BY S.Id";
+						WHERE S.Paginacao_Sequencia 
+							  BETWEEN (CASE WHEN @Deslocar = 0 THEN 1 
+							           ELSE @Deslocar + 1 END) 
+							  AND
+									  (CASE WHEN @Deslocar = 0 THEN @TamPag
+									   ELSE (@Deslocar + @TamPag) END)
+						ORDER BY S.{orderById}";
 
-            var parametros = new
-            {
-                PaginaAtual = obj.PaginaAtual,
-                TamanhoPagina = obj.TamanhoPagina,
-            };
+                result.Add(sql, item.Value);
+            }
 
-            return new Dictionary<string, object> { { sql, parametros } };
+            return result;
         }
     }
 }
