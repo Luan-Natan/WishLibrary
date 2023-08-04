@@ -6,46 +6,26 @@
 <div class="">
     <h1 class="">@ViewBag.Titulo</h1>
 
-    <form class="" asp-area="AdminArea" asp-controller="Livro" asp-action="ObterLivros" method="post">
-        <div class="my-3">
-            <label for="nome">Tamanho Página</label>
-            <input class="form-control" type="number" asp-for="@Model.TamanhoPagina" required>
+    @await Html.PartialAsync("Partials/_TableLivros.cshtml")
+
+    @await Html.PartialAsync("Partials/_TableGeneros.cshtml")
+
+    <div class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading2">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseGenero" aria-expanded="false" aria-controls="collapseGenero">
+            Gêneros: Listar / Editar / Deletar
+        </button>
+        <div class="collapse" id="collapseGenero">
+            @await Html.PartialAsync("Partials/_TableGeneros.cshtml")
         </div>
+    </div>
 
-        <div class="my-3">
-            <button class="btn btn-success" type="submit">Enviar</button>
+    <div class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading2">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseLivro" aria-expanded="false" aria-controls="collapseLivro">
+            Livros: Listar / Editar / Deletar
+        </button>
+        <div class="collapse" id="collapseLivro">
+            @await Html.PartialAsync("Partials/_TableLivros.cshtml")
         </div>
-    </form>
-
-    @await Html.PartialAsync("Partials/_TableLivros.cshtml");
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-
-            <li class="page-item">
-                @{
-                    Model.PaginaAtual = ViewBag.LivroList.PaginaAnterior;
-                    @Html.ActionLink("Anterior", "ObterLivros", "Livro", Model, new { @class = "page-link" })
-                    ;
-                }
-            </li>
-
-            @{
-                for (int i = 1; i <= ViewBag.LivroList.NumeroPaginas; i++)
-                {
-                    Model.PaginaAtual = i;
-                    <li class="page-item"> @Html.ActionLink(i.ToString(),"ObterLivros","Livro", Model, new { @class = "page-link"}) </li>
-                }
-            }
-
-            <li class="page-item">
-                @{
-                    Model.PaginaAtual = ViewBag.LivroList.ProximaPagina;
-                    @Html.ActionLink("Próximo", "ObterLivros", "Livro", Model, new { @class = "page-link" })
-                    ;
-                }
-            </li>
-        </ul>
-    </nav>
+    </div>
 
 </div>

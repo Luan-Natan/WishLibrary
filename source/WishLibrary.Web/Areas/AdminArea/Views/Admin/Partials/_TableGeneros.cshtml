@@ -2,7 +2,7 @@
 @{
 }
 
-<form class="" asp-area="AdminArea" asp-controller="Livro" asp-action="ObterLivros" method="get">
+<form class="" asp-area="AdminArea" asp-controller="Genero" asp-action="ObterGeneros" method="get">
     <div class="my-3">
         <label for="nome">Tamanho Página</label>
         <input class="form-control" type="number" asp-for="@Model.TamanhoPagina" required>
@@ -14,25 +14,21 @@
 </form>
 
 @{
-    if (ViewBag.LivroList.Response is not null)
+    if (ViewBag.GeneroList.Response is not null)
     {
         <table class="table" id="tabela">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nome</th>
                     <th scope="col">Gênero</th>
-                    <th scope="col">Data de lançamento</th>
                 </tr>
             </thead>
             <tbody id="listarLivros">
-                @foreach (var item in ViewBag.LivroList.Response)
+                @foreach (var item in ViewBag.GeneroList.Response)
                 {
                     <tr>
-                        <th scope="row">@item.IdLivro</th>
-                        <td>@item.NomeLivro</td>
+                        <th scope="row">@item.IdGenero</th>
                         <td>@item.NomeGenero</td>
-                        <td>@item.DataLancamento.ToString("dd/MM/yyyy")</td>
                     </tr>
                 }
             </tbody>
@@ -49,24 +45,24 @@
 
         <li class="page-item">
             @{
-                Model.PaginaAtual = ViewBag.LivroList.PaginaAnterior;
+                Model.PaginaAtual = ViewBag.GeneroList.PaginaAnterior;
                 @Html.ActionLink("Anterior", "ObterLivros", "Livro", Model, new { @class = "page-link" })
                 ;
             }
         </li>
 
         @{
-            for (int i = 1; i <= ViewBag.LivroList.NumeroPaginas; i++)
+            for (int i = 1; i <= ViewBag.GeneroList.NumeroPaginas; i++)
             {
                 Model.PaginaAtual = i;
-                <li class="page-item"> @Html.ActionLink(i.ToString(),"ObterLivros","Livro", Model, new { @class = "page-link"}) </li>
+                <li class="page-item"> @Html.ActionLink(i.ToString(),"ObterGeneros","Genero", Model, new { @class = "page-link"}) </li>
             }
         }
 
         <li class="page-item">
             @{
-                Model.PaginaAtual = ViewBag.LivroList.ProximaPagina;
-                @Html.ActionLink("Próximo", "ObterLivros", "Livro", Model, new { @class = "page-link" })
+                Model.PaginaAtual = ViewBag.GeneroList.ProximaPagina;
+                @Html.ActionLink("Próximo", "ObterGeneros", "Genero", Model, new { @class = "page-link" })
                 ;
             }
         </li>

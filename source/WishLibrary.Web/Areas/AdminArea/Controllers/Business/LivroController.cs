@@ -47,13 +47,10 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
             try
             {
                 obj = new PaginacaoRequestDto(obj.PaginaAtual, obj.TamanhoPagina);
-                
+
                 var command = new PainelControleCommand(obj, PainelControleEnum.Livro);
                 var response = _mediator.Send(command);
-                ViewBag.LivroList = response;
-
-
-                ViewBag.ListarLivros = _livroQuery.ObterLivroPorPaginacao(obj);
+                ViewBag.LivroList = response.Result;
 
                 return RedirectToAction("PainelControle", "Admin", obj);
             }

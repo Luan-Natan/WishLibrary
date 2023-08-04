@@ -6,6 +6,7 @@ using WishLibrary.Application.Commands.CadastrarLivro;
 using WishLibrary.Application.Commands.PainelControle;
 using WishLibrary.Application.Queries;
 using WishLibrary.Application.Queries.Interfaces;
+using WishLibrary.Core.DTOs;
 using WishLibrary.Core.Models;
 using WishLibrary.Domain.Repositories;
 using WishLibrary.Domain.Repositories.Base;
@@ -47,7 +48,7 @@ namespace WishLibrary.Web.Configuration
             services.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(Program).Assembly));
             services.AddScoped<IRequestHandler<CadastrarLivroCommand, Livro?>, CadastrarLivroCommandHandler>();
             services.AddScoped<IRequestHandler<CadastrarGeneroCommand, Genero?>, CadastrarGeneroCommandHandler>();
-            services.AddScoped<IRequestHandler<PainelControleCommand, object?>, PainelControleCommandHandler>();
+            services.AddScoped<IRequestHandler<PainelControleCommand, PaginacaoDto?>, PainelControleCommandHandler>();
 
             return services;
         }
@@ -67,6 +68,7 @@ namespace WishLibrary.Web.Configuration
         private static IServiceCollection ConfigureQueries(IServiceCollection services)
         {
             services.AddScoped<ILivroQuery, LivroQuery>();
+            services.AddScoped<IGeneroQuery, GeneroQuery>();
 
             return services;
         }

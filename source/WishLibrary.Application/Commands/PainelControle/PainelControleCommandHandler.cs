@@ -2,39 +2,51 @@
 using WishLibrary.Application.Queries.Interfaces;
 using WishLibrary.Core.DTOs;
 using WishLibrary.Core.Enums;
-using WishLibrary.Core.Models;
 
 namespace WishLibrary.Application.Commands.PainelControle
 {
-    public class PainelControleCommandHandler : IRequestHandler<PainelControleCommand, object?>
+    public class PainelControleCommandHandler : IRequestHandler<PainelControleCommand, PaginacaoDto?>
     {
         private readonly ILivroQuery _livroQuery;
+        private readonly IGeneroQuery _generoQuery;
 
-        public PainelControleCommandHandler(ILivroQuery livroQuery)
+        public PainelControleCommandHandler(ILivroQuery livroQuery, IGeneroQuery generoQuery)
         {
             _livroQuery = livroQuery;
+            _generoQuery = generoQuery;
         }
 
-        public async Task<object?> Handle(PainelControleCommand request, CancellationToken cancellationToken)
+        public async Task<PaginacaoDto?> Handle(PainelControleCommand request, CancellationToken cancellationToken)
         {
-
             switch (request.Modelo)
             {
                 case PainelControleEnum.Livro:
-                    var listaLivro = _livroQuery.ObterLivroPorPaginacao(request.PaginacaoObj);
-                    var numeroPaginasLivro = listaLivro?.FirstOrDefault()?.Paginacao?.NumeroPaginas;
-                    var livroPaginacao = new GenericPaginacaoQueryDTO<ObterLivroDto>(
-                                                       result: listaLivro,
-                                                       numeroPaginas: numeroPaginasLivro,
-                                                       paginaAnterior: request.PaginacaoObj.PaginaAtual == 1 ? 1 : request.PaginacaoObj.PaginaAtual - 1,
-                                                       proximaPagina: request.PaginacaoObj.PaginaAtual == numeroPaginasLivro ? numeroPaginasLivro : request.PaginacaoObj.PaginaAtual + 1);
-
-                    return livroPaginacao;
+                    return ListaLivro(request);                    
                 case PainelControleEnum.Genero:
-                    return null;
+                    return ListaGenero(request);
             }
 
             return null;
+        }
+
+        public PaginacaoDto ListaLivro(PainelControleCommand request)
+        {
+            var listaLivro = _livroQuery.ObterLivroPorPaginacao(request.PaginacaoObj);
+            var numeroPaginasLivro = listaLivro?.FirstOrDefault()?.Paginacao?.NumeroPaginas;
+
+            var livroPaginacao = new PaginacaoDto(numeroPaginasLivro, request.PaginacaoObj.PaginaAtual, listaLivro);
+
+            return livroPaginacao;
+        }
+
+        public PaginacaoDto ListaGenero(PainelControleCommand request)
+        {
+            var listaGenero= _generoQuery.ObterGeneroPorPaginacao(request.PaginacaoObj);
+            var numeroPaginasGenero = listaGenero?.FirstOrDefault()?.Paginacao?.NumeroPaginas;
+
+            var livroPaginacao = new PaginacaoDto(numeroPaginasGenero, request.PaginacaoObj.PaginaAtual, listaGenero);
+
+            return livroPaginacao;
         }
     }
 }

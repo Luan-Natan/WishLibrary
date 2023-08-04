@@ -1,15 +1,10 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WishLibrary.Core.DTOs;
 using WishLibrary.Core.Enums;
 
 namespace WishLibrary.Application.Commands.PainelControle
 {
-    public class PainelControleCommand : IRequest<object?>
+    public class PainelControleCommand : IRequest<PaginacaoDto?>
     {
         public PainelControleCommand(PaginacaoRequestDto paginacaoObj, PainelControleEnum modelo)
         {
