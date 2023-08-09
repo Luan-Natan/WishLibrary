@@ -21,12 +21,12 @@ namespace WishLibrary.Application.Commands.PainelControle
             switch (request.Modelo)
             {
                 case PainelControleEnum.Livro:
-                    return ListaLivro(request);                    
+                    return ListaLivro(request);
                 case PainelControleEnum.Genero:
                     return ListaGenero(request);
+                default:
+                    return null;
             }
-
-            return null;
         }
 
         public PaginacaoDto ListaLivro(PainelControleCommand request)
@@ -41,7 +41,7 @@ namespace WishLibrary.Application.Commands.PainelControle
 
         public PaginacaoDto ListaGenero(PainelControleCommand request)
         {
-            var listaGenero= _generoQuery.ObterGeneroPorPaginacao(request.PaginacaoObj);
+            var listaGenero = _generoQuery.ObterGeneroPorPaginacao(request.PaginacaoObj);
             var numeroPaginasGenero = listaGenero?.FirstOrDefault()?.Paginacao?.NumeroPaginas;
 
             var livroPaginacao = new PaginacaoDto(numeroPaginasGenero, request.PaginacaoObj.PaginaAtual, listaGenero);

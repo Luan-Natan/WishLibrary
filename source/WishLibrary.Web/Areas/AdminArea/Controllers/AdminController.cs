@@ -44,7 +44,7 @@ namespace WishLibrary.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<IActionResult> PainelControle(PaginacaoRequestDto obj)
+        public async Task<IActionResult> PainelControle(PaginacaoRequestDto obj, int tipo)
         {
             obj = new PaginacaoRequestDto(obj.PaginaAtual, obj.TamanhoPagina);
 

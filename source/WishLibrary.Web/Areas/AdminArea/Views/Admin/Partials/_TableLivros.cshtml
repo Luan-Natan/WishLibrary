@@ -1,10 +1,11 @@
-﻿@model PaginacaoRequestDto
+﻿@using WishLibrary.Core.Enums;
+@model PaginacaoRequestDto
 @{
 }
 
 <form class="" asp-area="AdminArea" asp-controller="Livro" asp-action="ObterLivros" method="get">
     <div class="my-3">
-        <label for="nome">Tamanho Página</label>
+        <label for="TamPag">Tamanho Página</label>
         <input class="form-control" type="number" asp-for="@Model.TamanhoPagina" required>
     </div>
 

@@ -49,7 +49,7 @@ namespace WishLibrary.Web.Areas.AdminArea.Controllers.Business
                 var response = _mediator.Send(command);
                 ViewBag.GeneroList = response.Result;
 
-                return RedirectToAction("PainelControle", "Admin", obj);
+                return View("~/Areas/AdminArea/Views/Admin/PainelControle.cshtml", obj);
             }
             catch (Exception)
             {

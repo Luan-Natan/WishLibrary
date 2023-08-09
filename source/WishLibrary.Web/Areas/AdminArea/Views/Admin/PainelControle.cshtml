@@ -7,25 +7,24 @@
     <h1 class="">@ViewBag.Titulo</h1>
 
     @await Html.PartialAsync("Partials/_TableLivros.cshtml")
-
     @await Html.PartialAsync("Partials/_TableGeneros.cshtml")
 
-    <div class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading2">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseGenero" aria-expanded="false" aria-controls="collapseGenero">
-            Gêneros: Listar / Editar / Deletar
-        </button>
-        <div class="collapse" id="collapseGenero">
-            @await Html.PartialAsync("Partials/_TableGeneros.cshtml")
-        </div>
+    @*    <div class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading2">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseGenero" aria-expanded="false" aria-controls="collapseGenero">
+    Gêneros: Listar / Editar / Deletar
+    </button>
+    <div class="collapse" id="collapseGenero">
+    @await Html.PartialAsync("Partials/_TableGeneros.cshtml")
+    </div>
     </div>
 
     <div class="card-header rgba-stylish-strong z-depth-1 mb-1" role="tab" id="heading2">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseLivro" aria-expanded="false" aria-controls="collapseLivro">
-            Livros: Listar / Editar / Deletar
-        </button>
-        <div class="collapse" id="collapseLivro">
-            @await Html.PartialAsync("Partials/_TableLivros.cshtml")
-        </div>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseLivro" aria-expanded="false" aria-controls="collapseLivro">
+    Livros: Listar / Editar / Deletar
+    </button>
+    <div class="collapse" id="collapseLivro">
+    @await Html.PartialAsync("Partials/_TableLivros.cshtml")
     </div>
+    </div>*@
 
 </div>
